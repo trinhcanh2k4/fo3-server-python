@@ -29,6 +29,15 @@ mã nguồn để bạn tự vận hành và tự phát triển tiếp.
 > thư mục dữ liệu đi kèm được trích xuất từ client game — hãy tự trích
 > dữ liệu từ bản client của chính bạn (xem mục 3).
 
+## Nguồn gốc
+
+Repo này được fork từ hai dự án mã nguồn mở đi trước:
+
+- [dtknd123/FO3-Server-Offline](https://github.com/dtknd123/FO3-Server-Offline)
+- [soloplayer24/FIFA-ONLINE-3-Private-Server](https://github.com/soloplayer24/FIFA-ONLINE-3-Private-Server)
+
+*This repository is a fork of [dtknd123/FO3-Server-Offline](https://github.com/dtknd123/FO3-Server-Offline) and [soloplayer24/FIFA-ONLINE-3-Private-Server](https://github.com/soloplayer24/FIFA-ONLINE-3-Private-Server).*
+
 ---
 
 ## 1. Thành phần
