@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIFA Online 3 Admin</title>
+<style>
+  :root {
+    --page: #1a2530; --panel: #223140; --panel-2: #2a3b4c; --line: #34495d;
+    --ink: #e8eef4; --mute: #91a4b6; --gold: #f2c200; --gold-ink: #1a1400;
+    --ep: #5aa91a; --pc: #2563c6; --vip: #b81d24; --res: #2f8f3a; --danger: #d4483e;
+    --radius: 3px;
+    font-family: Bahnschrift, "DIN Alternate", "Arial Narrow", "Segoe UI", sans-serif;
+    font-variant-numeric: tabular-nums;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font-size: 15px; line-height: 1.45; }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* top bar: the in-game HUD strip */
+  .hud { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 12px 20px;
+         background: #13202b; border-bottom: 2px solid var(--gold); }
+  .hud h1 { margin: 0; font-size: 20px; font-weight: 600; font-stretch: condensed; letter-spacing: .01em; }
+  .hud .who { display: flex; align-items: center; gap: 8px; color: var(--mute); }
+  .badge { display: inline-block; padding: 1px 6px; border-radius: 2px; font-size: 12px; font-weight: 700; color: #fff; }
+  .badge.pc { background: var(--pc); } .badge.vip { background: var(--vip); }
+  .wallet { margin-left: auto; display: flex; align-items: baseline; gap: 8px; }
+  .language { display:flex; align-items:center; gap:6px; color:var(--mute); font-size:13px; }
+  .coin { width: 14px; height: 14px; border-radius: 50%; background: var(--ep); box-shadow: inset 0 0 0 2px #2f6a06; align-self: center; }
+  .wallet strong { font-size: 30px; font-weight: 600; font-stretch: condensed; color: #8fd14f; }
+  .wallet small { color: var(--mute); }
+
+  .shell { display: grid; grid-template-columns: 210px 1fr; min-height: calc(100vh - 62px); }
+  nav { background: #1e2c38; border-right: 1px solid var(--line); padding: 12px 0; }
+  nav button { display: block; width: 100%; text-align: left; padding: 10px 20px; border: 0; background: none;
+               border-left: 3px solid transparent; cursor: pointer; color: var(--mute); }
+  nav button:hover { color: var(--ink); background: #243443; }
+  nav button[aria-selected="true"] { color: var(--ink); border-left-color: var(--gold); background: #263749; }
+  main { padding: 20px 24px 40px; max-width: 1180px; }
+  section[hidden] { display: none; }
+  h2 { margin: 0 0 4px; font-size: 22px; font-weight: 600; font-stretch: condensed; }
+  .lead { margin: 0 0 18px; color: var(--mute); max-width: 72ch; }
+  h3 { margin: 24px 0 8px; font-size: 16px; font-weight: 600; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); margin: 0 1px 1px 0; }
+  .facts div { background: var(--panel); padding: 12px 14px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
+  .facts dt { color: var(--mute); font-size: 13px; }
+  .facts dd { margin: 2px 0 0; font-size: 22px; font-weight: 600; font-stretch: condensed; }
+  .setting-card { display:flex; align-items:center; justify-content:space-between; gap:20px; max-width:760px;
+                  margin-top:20px; padding:16px 18px; background:var(--panel); border:1px solid var(--line); }
+  .setting-card h3 { margin:0 0 4px; }
+  .setting-card p { margin:0; color:var(--mute); }
+  .switch { position:relative; display:inline-flex; flex:0 0 auto; width:52px; height:29px; }
+  .switch input { position:absolute; width:1px; height:1px; opacity:0; }
+  .switch span { width:52px; border-radius:20px; background:#475563; cursor:pointer; transition:background .15s; }
+  .switch span::before { content:""; display:block; width:21px; height:21px; margin:4px; border-radius:50%; background:#e8eef4; transition:transform .15s; }
+  .switch input:checked + span { background:var(--res); }
+  .switch input:checked + span::before { transform:translateX(23px); }
+  .switch input:focus-visible + span { outline:2px solid var(--gold); outline-offset:3px; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; margin: 8px 0; }
+  label.f { display: grid; gap: 3px; font-size: 13px; color: var(--mute); }
+  label.check { display: flex; gap: 6px; align-items: center; color: var(--mute); font-size: 14px; }
+  input, select { background: #172330; border: 1px solid var(--line); border-radius: var(--radius); padding: 7px 9px; min-width: 0; }
+  input[type=number] { width: 130px; }
+  input.wide { width: min(360px, 100%); }
+  button.b { border: 1px solid var(--line); background: var(--panel-2); border-radius: var(--radius); padding: 7px 12px; cursor: pointer; }
+  button.b:hover { border-color: var(--mute); }
+  button.b.primary { background: var(--gold); border-color: var(--gold); color: var(--gold-ink); font-weight: 600; }
+  button.b.danger { color: #ffb4ad; border-color: #6b3330; }
+  button.b.small { padding: 3px 8px; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-weight: 500; color: var(--mute); background: #1d2a36; padding: 8px 10px; white-space: nowrap; }
+  td { padding: 6px 10px; border-top: 1px solid var(--line); vertical-align: middle; }
+  tr:hover td { background: #2636454d; }
+  td.num, th.num { text-align: right; }
+  .chip { display: inline-block; min-width: 46px; text-align: center; padding: 1px 6px; border-radius: 2px; font-size: 12px; font-weight: 700; background: #3a4b5c; }
+  .chip.SUB { background: #2d3d4c; color: #c9d6e2; } .chip.RES { background: var(--res); color: #fff; }
+  .chip.t2 { background: #6b5a1a; color: #fbe7a1; }
+  .muted { color: var(--mute); }
+
+  .status { position: sticky; top: 0; z-index: 2; margin: -20px -24px 16px; padding: 8px 24px; min-height: 36px;
+            background: #172430; border-bottom: 1px solid var(--line); color: var(--mute); }
+  .status.ok { color: #9fe06a; } .status.err { color: #ffb4ad; }
+  pre.log { margin: 0; padding: 12px; max-height: 60vh; overflow: auto; font: 12px/1.5 Consolas, "Cascadia Mono", monospace;
+            background: #111b24; border: 1px solid var(--line); border-radius: var(--radius); white-space: pre-wrap; word-break: break-all; }
+
+  @media (max-width: 760px) {
+    .shell { grid-template-columns: 1fr; }
+    nav { display: flex; overflow-x: auto; padding: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+    nav button { width: auto; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 10px 14px; }
+    nav button[aria-selected="true"] { border-bottom-color: var(--gold); }
+    main { padding: 16px; }
+    .status { margin: -16px -16px 12px; padding: 8px 16px; }
+    .wallet { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: no-preference) { nav button { transition: background .12s, color .12s; } }
+</style>
+</head>
+<body>
+<header class="hud">
+  <h1>FIFA Online 3 Admin</h1>
+  <div style="display:inline-flex;align-items:center;gap:6px;margin:0 12px;background:rgba(255,255,255,0.06);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);">
+    <label for="userSelect" style="font-size:12px;color:#94a3b8;font-weight:600;">Tài khoản:</label>
+    <select id="userSelect" onchange="onUserChanged()" style="background:#0f172a;color:#f8fafc;border:1px solid #334155;border-radius:4px;padding:3px 8px;font-size:12px;font-weight:bold;cursor:pointer;">
+      <option value="">-- Mặc định (__default__) --</option>
+    </select>
+    <button type="button" onclick="openAddUserDialog()" style="background:#0284c7;color:#fff;border:none;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:bold;cursor:pointer;" title="Thêm tài khoản mới">+ Thêm</button>
+  </div>
+  <span class="who"><span id="coachName">…</span><span class="badge pc">PC</span><span class="badge vip">VIP</span></span>
+  <span class="muted" id="serverTime"></span>
+  <label class="language" for="languageSelect"><span id="languageLabel">Language</span>
+    <select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="vi">Tiếng Việt</option></select>
+  </label>
+  <div class="wallet" aria-label="EP Balance"><span class="coin" aria-hidden="true"></span><strong id="epTop">…</strong><small>EP</small></div>
+</header>
+
+<div class="shell">
+  <nav role="tablist" aria-label="Admin Navigation">
+    <button role="tab" data-tab="ringkasan" aria-selected="true">Overview</button>
+    <button role="tab" data-tab="pemain">Club Players</button>
+    <button role="tab" data-tab="upgrade">Player Upgrade</button>
+    <button role="tab" data-tab="tambah">Add Player</button>
+    <button role="tab" data-tab="themhlv">Add Coach</button>
+    <button role="tab" data-tab="item">Packs &amp; Bag</button>
+    <button role="tab" data-tab="harian">Daily Rewards</button>
+    <button role="tab" data-tab="log">Server Log</button>
+  </nav>
+
+  <main>
+    <div class="status" id="status" role="status" aria-live="polite">Changes are saved immediately on the server; the game reflects them after relaunch or reloading the club screen.</div>
+
+    <section id="ringkasan">
+      <h2>Club Overview</h2>
+      <p class="lead">Current account and club status on the server.</p>
+      <dl class="facts" id="facts"></dl>
+      <div class="setting-card">
+        <div><h3>Allow duplicate players in lineup</h3>
+          <p id="duplicateStatus">Loading setting…</p></div>
+        <label class="switch" title="Allow duplicate players in lineup">
+          <input type="checkbox" id="duplicatePlayersToggle" role="switch" aria-label="Allow duplicate players in lineup">
+          <span aria-hidden="true"></span>
+        </label>
+      </div>
+      <h3>EP Balance</h3>
+      <form class="row" id="epForm">
+        <label class="f">Amount<input type="number" id="epValue" min="0" step="1000" required></label>
+        <button class="b primary" data-mode="add">Add EP</button>
+        <button class="b" data-mode="sub">Deduct EP</button>
+        <button class="b" data-mode="set">Set Exact Balance</button>
+      </form>
+    </section>
+
+    <section id="pemain" hidden>
+      <h2>Club Players</h2>
+      <p class="lead">Change grade, move to Reserves (used for Scout Trade), or release reserve players. Starting 18 squad players (MAIN/SUB) cannot be released directly from here.</p>
+      <div class="row"><label class="f">Filter players<input class="wide" id="playerFilter" placeholder="Search by player name"></label></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Role</th><th>Name</th><th class="num">Season</th><th class="num">OVR</th><th>Grade</th><th class="num">EP Price</th><th>Team</th><th>Action</th></tr></thead>
+        <tbody id="playerRows"></tbody>
+      </table></div>
+    </section>
+
+    <section id="upgrade" hidden>
+      <h2>Player Upgrade</h2>
+      <p class="lead" id="upgradeLead">Adjust the success rate used by future player enhancement attempts.</p>
+      <div class="card" style="padding:18px;margin-bottom:16px">
+        <h2 id="enhanceTitle">Upgrade Success Rate</h2>
+        <p id="enhanceStatus">Loading settings…</p>
+        <label for="enhanceRate"><span id="enhanceRateLabel">Success rate:</span> <strong id="enhanceValue">50%</strong></label>
+        <input id="enhanceRate" type="range" min="1" max="100" step="1" value="50" style="width:100%;margin:16px 0">
+        <button id="enhanceSave" class="b primary">Save Rate</button>
+        <button id="enhanceDefault" class="b">Use Default Rate</button>
+        <p class="muted" id="enhanceRecoveryNote">On failure with a higher-grade material, the card recovers randomly from +1 to the lower card's grade. A +1 card remains +1. Same-grade or lower-grade materials keep the existing rule.</p>
+        <p class="muted" id="enhanceScopeNote">Applies to future upgrade attempts for all managers. Existing cards and profiles are unchanged.</p>
+      </div>
+    </section>
+
+    <section id="tambah" hidden>
+      <h2>Add Player</h2>
+      <p class="lead">Search player cards in the database, then add directly to the club or send via Bag.</p>
+      <form class="row" id="searchForm">
+        <label class="f"><span id="playerNameLabel">Player Name</span><input class="wide" id="searchQ" placeholder="e.g. Messi, Ronaldo"></label>
+        <label class="f"><span id="playerSeasonLabel">Season</span><select id="playerSeasonFilter"><option value="">All seasons</option></select></label>
+        <button class="b primary">Search</button>
+      </form>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Name</th><th class="num">Season</th><th>Position</th><th class="num">OVR</th><th class="num">EP Price</th><th>Market</th><th id="playerGradeLabel">Grade to add</th><th>Action</th></tr></thead>
+        <tbody id="searchRows"><tr><td colspan="8" class="muted">Type at least 2 characters to search.</td></tr></tbody>
+      </table></div>
+    </section>
+
+    <section id="themhlv" hidden>
+      <h2 id="addStaffTitle">Add Coach</h2>
+      <p class="lead" id="addStaffLead">Search the available coach list, choose stars, and send a designated coach pack to the in-game Bag.</p>
+      <form class="row" id="staffSearchForm">
+        <label class="f"><span id="staffNameLabel">Coach Name</span><input class="wide" id="staffSearchQ" placeholder="e.g. Ferguson"></label>
+        <label class="f"><span id="staffTaskLabel">Duty</span><select id="staffTask"></select></label>
+        <button class="b primary" id="staffSearchButton">Search Coaches</button>
+      </form>
+      <div class="table-wrap"><table>
+        <thead><tr><th id="staffTableName">Coach Name</th><th id="staffTableGroup">Duty</th><th id="staffTableBoost">Player Attribute Boosts (random)</th><th id="staffGradeLabel">Stars to add</th><th id="staffTableAction">Action</th></tr></thead>
+        <tbody id="staffSearchRows"><tr><td colspan="5" class="muted" id="staffSearchHint">Search by name or choose a duty to list matching coaches.</td></tr></tbody>
+      </table></div>
+    </section>
+
+    <section id="item" hidden>
+      <h2>Player Packs &amp; Bag</h2>
+      <p class="lead">Packs go to My Items → Player Packs. Bag gifts go to My Items → Items and can be claimed via the Receive button.</p>
+      <h3>Give Packs to Inventory</h3>
+      <form class="row" id="packForm">
+        <label class="f">Pack<select id="packSel"></select></label>
+        <label class="f">Quantity<input type="number" id="packCount" min="1" max="999" value="1"></label>
+        <button class="b primary">Grant Pack</button>
+      </form>
+      <h3>Send Gift to Bag</h3>
+      <form class="row" id="bagForm">
+        <label class="f">Title<input class="wide" id="bagTitle" value="Admin Gift" maxlength="60"></label>
+        <label class="f">EP<input type="number" id="bagEp" min="0" step="1000" value="0"></label>
+        <label class="f">Pack<select id="bagPack"><option value="">No pack</option></select></label>
+        <label class="f">Pack Quantity<input type="number" id="bagCount" min="1" max="999" value="1"></label>
+        <label class="f">Player SPID<input type="number" id="bagSpid" placeholder="Optional"></label>
+        <label class="f">Grade<select id="bagGrade"></select></label>
+        <button class="b primary">Send to Bag</button>
+      </form>
+      <h3>Available Packs in Shop</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pack Name</th><th class="num">Item ID</th><th class="num">EP Price</th></tr></thead>
+        <tbody id="packRows"></tbody>
+      </table></div>
+    </section>
+
+    <section id="harian" hidden>
+      <h2>Daily Login Rewards</h2>
+      <p class="lead">First login each day grants the reward to Bag. Consecutive logins advance the day; missing a day resets to Day 1. Completing the cycle loops back to Day 1.</p>
+      <dl class="facts" id="dailyFacts"></dl>
+      <div class="row">
+        <button class="b" id="dailyGrant">Grant Next Day's Reward Now</button>
+        <button class="b danger" id="dailyReset">Reset Streak</button>
+      </div>
+      <h3>Reward Schedule</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Day</th><th>EP</th><th>Pack</th><th>Quantity</th><th>Action</th></tr></thead>
+        <tbody id="dailyRows"></tbody>
+      </table></div>
+      <div class="row">
+        <button class="b" id="dailyAdd">Add Day</button>
+        <button class="b primary" id="dailySave">Save Table</button>
+      </div>
+    </section>
+
+    <section id="scout" hidden>
+      <h2>Scout (Trade)</h2>
+      <p class="lead">Scouts that were recently used are locked until the cooldown finishes.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Scout</th><th>Status</th><th>Available In</th><th>Requirements</th></tr></thead>
+        <tbody id="scoutRows"></tbody>
+      </table></div>
+      <div class="row"><button class="b primary" id="scoutReset">Reset Cooldown for All Scouts</button></div>
+    </section>
+
+    <section id="log" hidden>
+      <h2>Server Log</h2>
+      <p class="lead">Recent entries from captures/http_config.log.</p>
+      <div class="row">
+        <button class="b" id="logRefresh">Refresh Log</button>
+        <label class="check"><input type="checkbox" id="logAuto"> Auto refresh every 3s</label>
+      </div>
+      <pre class="log" id="logBox"></pre>
+    </section>
+  </main>
+</div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const fmt = n => Number(n || 0).toLocaleString("en-US");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const SCOUT_NAMES = {default_A01: "Amateur Scout", default_B01: "Professional Scout", igr: "Cyber Cafe Scout (PC)", vip: "Special VIP Scout"};
+const savedLanguage = localStorage.getItem("fo3AdminLanguage");
+let language = savedLanguage === "en" ? "en" : "vi";
+const UI_TEXT = {
+  en: {language:"Language", playerName:"Player Name", playerSeason:"Season", playerGrade:"Grade to add", allSeasons:"All seasons", allDuties:"All duties", upgradeLead:"Adjust the success rate used by future player enhancement attempts.", enhanceTitle:"Upgrade Success Rate", enhanceLoading:"Loading settings…", enhanceRate:"Success rate:", enhanceSave:"Save Rate", enhanceDefault:"Use Default Rate", recovery:"On failure with a higher-grade material, the card recovers randomly from +1 to the lower card's grade. A +1 card remains +1. Same-grade or lower-grade materials keep the existing rule.", scope:"Applies to future upgrade attempts for all managers. Existing cards and profiles are unchanged.", originalRate:"Using the default rate based on card grades and materials.", activeRate:"Current success rate: ", saved:"Upgrade success rate saved.", restored:"Default success rate restored.", addStaff:"Add Coach", addStaffLead:"Search coaches by name or duty, choose stars, and add the selected coach directly to the club coach list.", staffName:"Coach Name", staffTask:"Duty", staffGrade:"Stars to add", searchStaff:"Search Coaches", name:"Coach Name", group:"Duty", boost:"Player Attribute Boosts (random)", action:"Action", staffHint:"Search by name or choose a duty to list all matching coaches.", staffNone:"No coaches found matching those filters.", addClub:"Add to Coach List", staffFound:" coach(es) found.", added:" added to the coach list." , star:"star", stars:"stars", coachRole:"Head Coach", oneOf:"One of:"},
+  vi: {playerName:"Tên cầu thủ", playerSeason:"Lọc theo mùa", playerGrade:"Cấp thẻ khi thêm", allSeasons:"Tất cả mùa", allDuties:"T\u1ea5t c\u1ea3 nhi\u1ec7m v\u1ee5", language:"Ngôn ngữ", upgradeLead:"Điều chỉnh tỷ lệ thành công cho các lần nâng cấp cầu thủ tiếp theo.", enhanceTitle:"Tỷ lệ nâng cấp thành công", enhanceLoading:"Đang tải thiết lập…", enhanceRate:"Tỷ lệ thành công:", enhanceSave:"Lưu tỷ lệ", enhanceDefault:"Dùng tỷ lệ mặc định", recovery:"Khi thất bại với thẻ nguyên liệu cấp cao hơn, thẻ chính hồi ngẫu nhiên từ +1 đến cấp của thẻ thấp hơn. Thẻ +1 vẫn giữ +1. Nguyên liệu cùng cấp hoặc thấp hơn giữ nguyên quy tắc hiện tại.", scope:"Áp dụng cho các lần nâng cấp tiếp theo của mọi HLV. Không thay đổi thẻ hoặc hồ sơ hiện có.", originalRate:"Đang dùng tỷ lệ mặc định theo cấp thẻ và nguyên liệu.", activeRate:"Tỷ lệ thành công hiện tại: ", saved:"Đã lưu tỷ lệ nâng cấp.", restored:"Đã khôi phục tỷ lệ mặc định.", addStaff:"Thêm HLV", addStaffLead:"Tìm HLV theo tên hoặc nhiệm vụ, chọn số sao rồi thêm trực tiếp HLV đã chọn vào danh sách HLV trong game.", staffName:"Tên HLV", staffTask:"Nhiệm vụ", staffGrade:"Số sao khi thêm", searchStaff:"Tìm HLV", name:"Tên HLV", group:"Nhiệm vụ", boost:"Chỉ số cộng cho cầu thủ (ngẫu nhiên)", action:"Thao tác", staffHint:"Có thể tìm theo tên hoặc chọn nhiệm vụ để hiện toàn bộ HLV phù hợp.", staffNone:"Không tìm thấy HLV phù hợp với bộ lọc.", addClub:"Thêm vào danh sách HLV", staffFound:" HLV được tìm thấy.", added:" đã được thêm vào danh sách HLV.", star:"sao", stars:"sao", coachRole:"HLV chính", oneOf:"Ngẫu nhiên một chỉ số:"}
+};
+const VI_TEXT = {
+  "Add Player":"Thêm cầu thủ", "Add Coach":"Thêm HLV", 
+  "Overview":"Tổng quan", "Club Players":"Danh sách cầu thủ", "Player Upgrade":"Nâng cấp cầu thủ", "Add Player / Coach":"Thêm Cầu thủ / HLV", "Packs & Bag":"Gói và kho đồ", "Daily Rewards":"Quà hằng ngày", "Scout":"Trinh sát", "Server Log":"Nhật ký máy chủ",
+  "Admin Navigation":"Điều hướng quản trị", "EP Balance":"Số dư EP", "Changes are saved immediately on the server; the game reflects them after relaunch or reloading the club screen.":"Thay đổi được lưu ngay trên máy chủ; trong game sẽ cập nhật sau khi khởi động lại hoặc tải lại màn hình đội bóng.",
+  "Club Overview":"Tổng quan đội bóng", "Current account and club status on the server.":"Thông tin tài khoản và đội bóng hiện tại trên máy chủ.", "Allow duplicate players in lineup":"Cho phép cầu thủ trùng trong đội hình", "Allow duplicate players":"Cho phép cầu thủ trùng", "Allow same player across different seasons":"Cho phép cùng cầu thủ ở các mùa khác nhau", "Loading setting…":"Đang tải thiết lập…", "Loading settings…":"Đang tải thiết lập…", "Loading setting":"Đang tải thiết lập…",
+  "Packs in Inventory":"Gói trong kho", "Unclaimed Gifts in Bag":"Quà chưa nhận", "Login Streak":"Chuỗi đăng nhập", "Today's Reward":"Quà hôm nay", "Already granted":"Đã nhận", "Awaiting login":"Chờ đăng nhập", "VIP + PC Cafe active until":"VIP và PC đang hoạt động đến", "Total Login Days":"Tổng ngày đăng nhập", "Last Reward Date":"Ngày nhận quà gần nhất", "Server Date":"Ngày máy chủ",
+  "On — a player may appear more than once, but each appearance must use a different season.":"Bật — một cầu thủ có thể xuất hiện nhiều lần nhưng phải khác mùa.", "Off — a player may appear only once, even across seasons.":"Tắt — mỗi cầu thủ chỉ được xuất hiện một lần, kể cả khác mùa.",
+  "EP Balance":"Số dư EP", "Amount":"Số lượng", "Add EP":"Cộng EP", "Deduct EP":"Trừ EP", "Set Exact Balance":"Đặt số dư chính xác",
+  "Change grade, move to Reserves (used for Scout Trade), or release reserve players. Starting 18 squad players (MAIN/SUB) cannot be released directly from here.":"Đổi cấp thẻ, chuyển cầu thủ sang Dự bị (dùng cho Đổi bằng Trinh sát), hoặc giải phóng cầu thủ dự bị. Không thể giải phóng trực tiếp 18 cầu thủ thuộc Đội chính/Dự bị từ đây.",
+  "Filter players":"Lọc cầu thủ", "Search by player name":"Tìm theo tên cầu thủ", "Role":"Vai trò", "Name":"Tên", "Season":"Mùa", "OVR":"Tổng chỉ số", "Grade":"Cấp thẻ", "EP Price":"Giá EP", "Team":"Đội", "Action":"Thao tác", "RES":"Dự trữ", "SUB":"Dự bị", "MAIN":"Đội chính", "Reserves":"Dự bị", "Main Team":"Đội chính", "To Main Team":"Chuyển về Đội chính", "To Reserves":"Chuyển sang Dự bị", "Release":"Giải phóng", "No matching players found.":"Không tìm thấy cầu thủ phù hợp.",
+  "Adjust the success rate used by future player enhancement attempts.":"Điều chỉnh tỷ lệ thành công cho các lần nâng cấp cầu thủ tiếp theo.", "Player Name":"Tên cầu thủ", "e.g. Messi, Ronaldo":"Ví dụ: Messi, Ronaldo", "Search":"Tìm kiếm", "Position":"Vị trí", "Market":"Thị trường", "Type at least 2 characters to search.":"Nhập ít nhất 2 ký tự để tìm kiếm.", "Listed":"Đang giao dịch", "Unlisted":"Chưa giao dịch", "Add to Club":"Thêm vào đội", "Send via Bag":"Gửi vào Kho đồ", "No players found matching that name.":"Không tìm thấy cầu thủ phù hợp với tên này.",
+  "Player Packs & Bag":"Gói cầu thủ và Kho đồ", "Packs go to My Items → Player Packs. Bag gifts go to My Items → Items and can be claimed via the Receive button.":"Gói được chuyển vào Vật phẩm của tôi → Gói cầu thủ. Quà được gửi vào Vật phẩm và có thể nhận bằng nút Nhận.", "Give Packs to Inventory":"Thêm gói vào kho", "Pack":"Gói", "Quantity":"Số lượng", "Grant Pack":"Thêm gói", "Send Gift to Bag":"Gửi quà vào Kho đồ", "Title":"Tiêu đề", "Admin Gift":"Quà quản trị", "No pack":"Không có gói", "Pack Quantity":"Số lượng gói", "Player SPID":"SPID cầu thủ", "Optional":"Không bắt buộc", "Send to Bag":"Gửi vào Kho đồ", "Available Packs in Shop":"Các gói hiện có trong Cửa hàng", "Pack Name":"Tên gói", "Item ID":"Mã vật phẩm",
+  "Daily Login Rewards":"Quà đăng nhập hằng ngày", "First login each day grants the reward to Bag. Consecutive logins advance the day; missing a day resets to Day 1. Completing the cycle loops back to Day 1.":"Lần đăng nhập đầu tiên mỗi ngày sẽ gửi quà vào Kho đồ. Đăng nhập liên tiếp sẽ tăng ngày nhận; bỏ lỡ một ngày sẽ quay về Ngày 1. Hoàn tất chu kỳ sẽ bắt đầu lại từ Ngày 1.", "Grant Next Day's Reward Now":"Nhận quà ngày tiếp theo ngay", "Reset Streak":"Đặt lại chuỗi đăng nhập", "Reward Schedule":"Lịch phần thưởng", "Day":"Ngày", "Add Day":"Thêm ngày", "Delete Day":"Xóa ngày", "Save Table":"Lưu lịch",
+  "Scout (Trade)":"Trinh sát (Đổi cầu thủ)", "Scouts that were recently used are locked until the cooldown finishes.":"Trinh sát vừa sử dụng sẽ bị khóa cho đến khi hết thời gian hồi.", "Scout":"Trinh sát", "Status":"Trạng thái", "Available In":"Sẵn sàng sau", "Requirements":"Điều kiện", "Reset Cooldown for All Scouts":"Đặt lại hồi chiêu cho mọi Trinh sát", "Locked":"Đang khóa", "Ready":"Sẵn sàng", "Now":"Ngay bây giờ", "None":"Không có", "Amateur Scout":"Trinh sát nghiệp dư", "Professional Scout":"Trinh sát chuyên nghiệp", "Cyber Cafe Scout (PC)":"Trinh sát phòng máy (PC)", "Special VIP Scout":"Trinh sát VIP đặc biệt", "player value ≥":"Giá trị cầu thủ ≥", "grade ≥":"Cấp thẻ ≥", "count":"số lượng", "season":"mùa thẻ",
+  "Server Log":"Nhật ký máy chủ", "Recent entries from captures/http_config.log.":"Các dòng nhật ký gần đây từ captures/http_config.log.", "Refresh Log":"Tải lại nhật ký", "Auto refresh every 3s":"Tự động tải lại mỗi 3 giây",
+  "Failed: ":"Thất bại: ", "Failed to load: ":"Không tải được: ", "Failed to load packs list: ":"Không tải được danh sách gói: ", "Duplicate-player setting saved.":"Đã lưu thiết lập cầu thủ trùng.", "Please enter a valid EP amount.":"Vui lòng nhập số EP hợp lệ.", "Player grade updated.":"Đã cập nhật cấp thẻ cầu thủ.", "Player moved to Reserves.":"Đã chuyển cầu thủ sang Dự bị.", "Player returned to Main Team.":"Đã chuyển cầu thủ về Đội chính.", "Streak reset.":"Đã đặt lại chuỗi đăng nhập.", "All scouts are ready to use.":"Tất cả Trinh sát đã sẵn sàng.", "Daily reward table saved.":"Đã lưu lịch quà hằng ngày.", "Save Rate":"Lưu tỷ lệ", "Use Default Rate":"Dùng tỷ lệ mặc định", "Search Staff":"Tìm nhân viên", "All Staff":"Tất cả nhân viên", "Technical":"Huấn luyện kỹ thuật", "Head Coach":"HLV trưởng", "Medical":"Y tế", "Staff ID":"Mã nhân viên", "EP":"EP", "Search player cards in the database, then add directly to the club or send via Bag.":"Tìm thẻ cầu thủ trong cơ sở dữ liệu, sau đó thêm thẳng vào đội hoặc gửi qua Kho đồ."
+};
+const VI_ATTRS = {"Search by player name":"Tìm theo tên cầu thủ", "e.g. Ferguson":"Ví dụ: Ferguson", "e.g. Messi, Ronaldo":"Ví dụ: Messi, Ronaldo", "Optional":"Không bắt buộc", "EP Balance":"Số dư EP", "Admin Navigation":"Điều hướng quản trị", "Language":"Ngôn ngữ", "Allow duplicate players":"Cho phép cầu thủ trùng", "Allow duplicate players in lineup":"Cho phép cầu thủ trùng trong đội hình", "Allow same player across different seasons":"Cho phép cùng cầu thủ ở các mùa khác nhau"};
+const originalText = new WeakMap();
+function translateTextTree(root = document) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (!originalText.has(node)) originalText.set(node, node.nodeValue);
+    const source = originalText.get(node), trimmed = source.trim();
+    if (!trimmed) continue;
+    const leading = source.match(/^\s*/)[0], trailing = source.match(/\s*$/)[0];
+    let value = language === "vi" ? (VI_TEXT[trimmed] || trimmed) : trimmed;
+    if (language === "vi") value = value.replace(/^(\d+) days$/, "$1 ngày").replace(/^Day (\d+)$/, "Ngày $1");
+    const next = leading + value + trailing;
+    if (node.nodeValue !== next) node.nodeValue = next;
+  }
+  for (const el of root.querySelectorAll ? root.querySelectorAll("[placeholder], [aria-label], [title]") : []) {
+    for (const attr of ["placeholder", "aria-label", "title"]) {
+      if (!el.hasAttribute(attr)) continue;
+      const val = el.getAttribute(attr);
+      const originalKey = "data-i18n-original-" + attr;
+      if (!el.hasAttribute(originalKey)) el.setAttribute(originalKey, val);
+      const source = el.getAttribute(originalKey);
+      let translated = language === "vi" ? (VI_ATTRS[source] || source) : source;
+      if (language === "vi") translated = translated.replace(/^Grade (.+)$/, "Cấp thẻ $1");
+      el.setAttribute(attr, translated);
+    }
+  }
+}
+function tr(key) { return UI_TEXT[language][key] || UI_TEXT.en[key] || key; }
+function duplicateStatusText(enabled) {
+  if (language === "vi") return enabled
+    ? "Bật — một cầu thủ có thể xuất hiện nhiều lần nhưng phải khác mùa."
+    : "Tắt — mỗi cầu thủ chỉ được xuất hiện một lần, kể cả khác mùa.";
+  return enabled
+    ? "On — a player may appear more than once, but each appearance must use a different season."
+    : "Off — a player may appear only once, even across seasons.";
+}
+function setLanguage(value) {
+  language = value === "vi" ? "vi" : "en";
+  localStorage.setItem("fo3AdminLanguage", language);
+  $("#languageSelect").value = language;
+  const ids = {languageLabel:"language", playerNameLabel:"playerName", playerSeasonLabel:"playerSeason", playerGradeLabel:"playerGrade", upgradeLead:"upgradeLead", enhanceTitle:"enhanceTitle", enhanceRateLabel:"enhanceRate", enhanceSave:"enhanceSave", enhanceDefault:"enhanceDefault", enhanceRecoveryNote:"recovery", enhanceScopeNote:"scope", addStaffTitle:"addStaff", addStaffLead:"addStaffLead", staffNameLabel:"staffName", staffTaskLabel:"staffTask", staffGradeLabel:"staffGrade", staffSearchButton:"searchStaff", staffTableName:"name", staffTableGroup:"group", staffTableBoost:"boost", staffTableAction:"action", staffSearchHint:"staffHint"};
+  for (const [id, key] of Object.entries(ids)) $("#" + id).textContent = tr(key);
+  const seasonValue = $("#playerSeasonFilter").value;
+  const allSeasonOption = $("#playerSeasonFilter option[value='']");
+  if (allSeasonOption) allSeasonOption.textContent = tr("allSeasons");
+  renderStaffTasks();
+  if (playerSeasonsReady) playerSeasonsReady.then(() => { $("#playerSeasonFilter").value = seasonValue; });
+  document.documentElement.lang = language;
+  translateTextTree();
+  const duplicateStatus = $("#duplicateStatus");
+  if (duplicateStatus && !duplicateStatus.textContent.startsWith("Loading"))
+    duplicateStatus.textContent = duplicateStatusText($("#duplicatePlayersToggle").checked);
+  renderEnhanceStatus();
+}
+const QUEST_TEXT = {require_value: "player value ≥", require_grade: "grade ≥", require_grade_count: "count", require_season: "season", require_season_count: "count"};
+let packs = [], packsReady;
+let playerSeasonsReady, staffTasksReady;
+
+async function api(name, body) {
+  const userSelect = document.getElementById("userSelect");
+  const targetUser = (userSelect ? userSelect.value : "") || "";
+  let url = "/api/" + name;
+  if (targetUser) {
+    url += (url.includes("?") ? "&" : "?") + "user=" + encodeURIComponent(targetUser);
+  }
+  let payload = body;
+  if (body !== undefined && typeof body === "object" && body !== null && targetUser && !("user" in body)) {
+    payload = Object.assign({user: targetUser}, body);
+  }
+  const opt = payload === undefined ? {} : {method: "POST", headers: {"Content-Type": "application/json", "X-FO3-Admin": "1"}, body: JSON.stringify(payload)};
+  const r = await fetch(url, opt);
+  const j = await r.json();
+  if (j.error) throw new Error(j.error);
+  return j;
+}
+
+async function loadUsers() {
+  try {
+    const res = await api("users");
+    const sel = document.getElementById("userSelect");
+    if (!sel) return;
+    const current = sel.value || localStorage.getItem("fo3AdminUser") || "";
+    sel.innerHTML = '<option value="">-- Mặc định (__default__) --</option>';
+    for (const u of (res.users || [])) {
+      const opt = document.createElement("option");
+      opt.value = u.username;
+      opt.textContent = `${u.username} (${u.coach_name || "Manager"})`;
+      if (u.username === current) opt.selected = true;
+      sel.appendChild(opt);
+    }
+  } catch (e) {
+    console.error("loadUsers error", e);
+  }
+}
+
+function onUserChanged() {
+  const sel = document.getElementById("userSelect");
+  if (sel) {
+    localStorage.setItem("fo3AdminUser", sel.value);
+  }
+  const activeTab = document.querySelector("nav [role=tab][aria-selected=true]");
+  show(activeTab ? activeTab.dataset.tab : "ringkasan");
+}
+
+function openAddUserDialog() {
+  const m = document.getElementById("addUserModal");
+  if (m) {
+    m.style.display = "flex";
+    const uInput = document.getElementById("modalUsername");
+    if (uInput) { uInput.value = ""; uInput.focus(); }
+  }
+}
+
+function closeAddUserDialog() {
+  const m = document.getElementById("addUserModal");
+  if (m) m.style.display = "none";
+}
+
+async function submitAddUser() {
+  const uInput = document.getElementById("modalUsername");
+  const cInput = document.getElementById("modalCoachName");
+  const pInput = document.getElementById("modalPassword");
+  const epInput = document.getElementById("modalEp");
+  
+  const username = (uInput ? uInput.value : "").trim().toLowerCase();
+  const coachName = (cInput && cInput.value.trim()) ? cInput.value.trim() : username;
+  const password = (pInput && pInput.value.trim()) ? pInput.value.trim() : "123456";
+  const ep = (epInput ? parseInt(epInput.value) : 100000000) || 100000000;
+  
+  if (!username) {
+    alert("Vui lòng nhập tên tài khoản!");
+    return;
+  }
+  try {
+    await api("user_add", {
+      username: username,
+      password: password,
+      coach_name: coachName,
+      ep: ep,
+      teamid: 1
+    });
+    closeAddUserDialog();
+    alert(`Đã tạo tài khoản '${username}' thành công!`);
+    await loadUsers();
+    const sel = document.getElementById("userSelect");
+    if (sel) {
+      sel.value = username;
+      onUserChanged();
+    }
+  } catch (err) {
+    alert("Lỗi tạo tài khoản: " + err.message);
+  }
+}
+
+function say(msg, kind) {
+  if (language === "vi") {
+    if (msg.startsWith("Failed: ")) msg = "Thất bại: " + msg.slice(8);
+    else if (msg.startsWith("Failed to load: ")) msg = "Không tải được: " + msg.slice(16);
+    else if (msg.startsWith("Search failed: ")) msg = "Tìm kiếm thất bại: " + msg.slice(14);
+    else if (/^\d+ cards found\.$/.test(msg)) msg = msg.replace(" cards found.", " thẻ cầu thủ được tìm thấy.");
+    else if (msg.startsWith("EP balance updated to ")) msg = "Đã cập nhật số dư EP thành " + msg.slice("EP balance updated to ".length) + ".";
+    else if (msg.endsWith(" added to club (reserves).")) msg = msg.replace(" added to club (reserves).", " đã được thêm vào đội (dự trữ).");
+    else if (msg.endsWith(" sent to Bag.")) msg = msg.replace(" sent to Bag.", " đã được gửi vào Kho đồ.");
+    else if (msg.endsWith(" added to My Items.")) msg = msg.replace(" added to My Items.", " đã được thêm vào Vật phẩm của tôi.");
+    else if (msg.endsWith(" released from club.")) msg = msg.replace(" released from club.", " đã được giải phóng khỏi đội.");
+    else if (msg.startsWith('Gift "') && msg.endsWith('" sent to Bag.')) msg = "Quà " + msg.slice(6, -13) + " đã được gửi vào Kho đồ.";
+  }
+  const s = $("#status"); s.textContent = msg; s.className = "status " + (kind || "");
+}
+async function act(fn, okMsg) {
+  try { await fn(); if (okMsg) say(okMsg, "ok"); await refreshTop(); }
+  catch (e) { say("Failed: " + e.message, "err"); }
+}
+const gradeOpts = (val, lo = 1) => Array.from({length: 11 - lo}, (_, i) => i + lo)
+  .map(g => `<option value="${g}"${g == val ? " selected" : ""}>+${g}</option>`).join("");
+// Staff grade is stored in half-star units by the game (grade 5 renders as 2.5 stars).
+const coachStarOpts = selected => Array.from({length: 5}, (_, i) => i + 1)
+  .map(stars => `<option value="${stars * 2}"${stars * 2 === selected ? " selected" : ""}>${stars} ${tr(stars === 1 ? "star" : "stars")}</option>`).join("");
+const STAFF_TASKS = [
+  {code:"FRONT",label:"Technical"},{code:"PREMIUM",label:"Head Coach"},{code:"MEDICAL",label:"Medical"},
+  {code:"FW",label:"FW"},{code:"MF",label:"MF"},{code:"DF",label:"DF"},{code:"GK",label:"GK"}
+];
+const COACH_DUTIES = {
+  en:{FRONT:"Technical",PREMIUM:"Head Coach",MEDICAL:"Medical",FW:"Forward Coach",MF:"Midfielder Coach",DF:"Defender Coach",GK:"Goalkeeper Coach"},
+  vi:{FRONT:"HLV kỹ thuật",PREMIUM:"HLV chính",MEDICAL:"Y tế",FW:"HLV tiền đạo",MF:"HLV tiền vệ",DF:"HLV hậu vệ",GK:"HLV thủ môn"}
+};
+function coachDuty(code) { return COACH_DUTIES[language][code] || code; }
+const VI_STAT_LABELS = {"Acceleration":"T?ng t?c","Aggresion":"Quy?t ?o?n","Agility":"Kh?o l?o","Balance":"Th?ng b?ng","Ball Control":"Ki?m so?t b?ng","Cross":"T?t b?ng","Dribble":"R? b?ng","Finishing":"D?t ?i?m","Free Kick":"?? ph?t","GK Diving":"Bay ng??i","GK Goal Kick":"Ph?t b?ng","GK Handling":"B?t b?ng","GK Positioning":"Ch?n v? tr?","GK Reaction":"Ph?n x?","Heading":"??nh ??u","Interception":"C?t b?ng","Jump":"Nh?y","Long Pass":"Chuy?n d?i","Long Shot":"S?t xa","Marking":"K?m ng??i","Overall Rating":"T?ng qu?t","Penalty Kick":"S?t ph?t ??n","Positioning":"Ch?n v? tr?","Reaction":"Ph?n ?ng","Shoot Curve":"S?t xo?y","Shoot Power":"L?c s?t","Short Pass":"Chuy?n ng?n","Sliding Tackle":"Xo?c b?ng","Sprint Speed":"T?c ??","Stamina":"Th? l?c","Strength":"S?c m?nh","Tackle":"Tranh b?ng","Vision":"T?m nh?n","Volley":"V?-l?"};
+function renderCoachBoosts(stats, grade) {
+  const amount = Math.max(1, Math.ceil(grade / 2));
+  return (stats || []).slice(0, Math.min(3, grade)).map(name =>
+    `<div>${esc(language === "vi" ? (VI_STAT_LABELS[name] || name) : name)} +${amount}</div>`
+  ).join("") || "?";
+}
+function renderStaffTasks(tasks = STAFF_TASKS) {
+  const select = $("#staffTask"), selected = select.value;
+  select.innerHTML = `<option value="">${esc(tr("allDuties"))}</option>` + tasks.map(task => `<option value="${esc(task.code)}">${esc(coachDuty(task.code))}</option>`).join("");
+  select.value = [...select.options].some(option => option.value === selected) ? selected : "";
+}
+const packOpts = val => packs.map(p => `<option value="${p.itemid}"${p.itemid == val ? " selected" : ""}>${esc(p.name)}</option>`).join("");
+const facts = list => list.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+
+async function refreshTop() {
+  const s = await api("summary");
+  $("#coachName").textContent = language === "vi" ? `${s.coach.name}, Đội ${s.coach.teamid}` : `${s.coach.name}, Team ${s.coach.teamid}`;
+  $("#epTop").textContent = fmt(s.coach.ep);
+  $("#serverTime").textContent = s.server_time;
+  return s;
+}
+
+const loaders = {
+  async ringkasan() {
+    const s = await refreshTop(), d = s.daily;
+    const duplicateSetting = await api("duplicate_player_settings");
+    $("#duplicatePlayersToggle").checked = duplicateSetting.allow_duplicates;
+    $("#duplicateStatus").textContent = duplicateStatusText(duplicateSetting.allow_duplicates);
+    $("#facts").innerHTML = facts([
+      ["Club Players", `${s.players} / ${s.max_players}`],
+      ["Packs in Inventory", fmt(s.packs)],
+      ["Unclaimed Gifts in Bag", fmt(s.bag)],
+      ["Login Streak", `${d.streak || 0} days`],
+      ["Today's Reward", d.granted_today ? "Already granted" : "Awaiting login"],
+      ["VIP + PC Cafe active until", s.vip_until],
+    ]);
+  },
+  async pemain() {
+    const {players} = await api("players");
+    const q = $("#playerFilter").value.trim().toLowerCase();
+    const rows = players.filter(p => !q || p.name.toLowerCase().includes(q)).sort((a, b) => b.ovr - a.ovr);
+    $("#playerRows").innerHTML = rows.map(p => `<tr>
+      <td><span class="chip ${p.role}">${p.role}</span>${p.team2 ? ' <span class="chip t2">Reserves</span>' : ""}</td>
+      <td>${esc(p.name)} <span class="muted">${p.spid}</span></td>
+      <td class="num">${p.season}</td><td class="num">${p.ovr}</td>
+      <td><select data-grade="${p.id}" aria-label="Grade ${esc(p.name)}">${gradeOpts(p.grade, 0)}</select></td>
+      <td class="num">${fmt(p.price)}</td>
+      <td>${p.role === "RES" ? `<button class="b small" data-team="${p.id}" data-to="${p.team2 ? "first" : "second"}">${p.team2 ? "To Main Team" : "To Reserves"}</button>` : '<span class="muted">Main Team</span>'}</td>
+      <td>${p.role === "RES" ? `<button class="b small danger" data-remove="${p.id}" data-name="${esc(p.name)}">Release</button>` : ""}</td>
+    </tr>`).join("") || `<tr><td colspan="8" class="muted">No matching players found.</td></tr>`;
+  },
+  async tambah() {},
+  async themhlv() {},
+  async upgrade() { renderEnhance(await api("enhancement_settings")); },
+  async item() {
+    await packsReady;
+    $("#packRows").innerHTML = packs.map(p => `<tr><td>${esc(p.name)}</td><td class="num">${p.itemid}</td><td class="num">${fmt(p.price)}</td></tr>`).join("");
+  },
+  async harian() {
+    await packsReady;
+    const d = await api("daily"), st = d.status;
+    $("#dailyFacts").innerHTML = facts([
+      ["Login Streak", `${st.streak || 0} days`], ["Total Login Days", fmt(st.total)],
+      ["Last Reward Date", st.last || "Never"], ["Server Date", d.today],
+    ]);
+    renderDaily(d.table);
+  },
+  async scout() {
+    const s = await api("summary");
+    $("#scoutRows").innerHTML = s.scouts.map(sc => {
+      const questLabels = language === "vi"
+        ? {require_value: "Giá trị cầu thủ ≥", require_grade: "Cấp thẻ ≥", require_grade_count: "Số lượng", require_season: "Mùa thẻ", require_season_count: "Số lượng"}
+        : QUEST_TEXT;
+      const q = sc.quest ? Object.entries(sc.quest).map(([k, v]) => `${questLabels[k] || k} ${typeof v === "number" ? fmt(v) : v}`).join(", ") : tr("None");
+      return `<tr><td>${esc(SCOUT_NAMES[sc.key] || sc.key)}</td><td>${sc.lock ? "Locked" : "Ready"}</td>
+        <td>${sc.cooltime ? new Date(sc.cooltime).toLocaleString("en-US") : "Now"}</td><td class="muted">${esc(q)}</td></tr>`;
+    }).join("");
+  },
+  async log() {
+    const {lines} = await api("log?n=150");
+    const box = $("#logBox"); box.textContent = lines.join("\n"); box.scrollTop = box.scrollHeight;
+  },
+};
+
+function renderDaily(table) {
+  $("#dailyRows").innerHTML = table.map((r, i) => `<tr>
+    <td>Day ${i + 1}</td>
+    <td><input type="number" min="0" step="1000" value="${r.ep || 0}" data-k="ep" aria-label="EP Day ${i + 1}"></td>
+    <td><select data-k="pack" aria-label="Pack Day ${i + 1}"><option value="">No pack</option>${packOpts(r.pack)}</select></td>
+    <td><input type="number" min="1" max="99" value="${r.count || 1}" data-k="count" aria-label="Pack Count Day ${i + 1}"></td>
+    <td><button class="b small danger" data-drop="${i}">Delete Day</button></td>
+  </tr>`).join("");
+}
+function readDaily() {
+  return [...$("#dailyRows").rows].map(tr => {
+    const v = k => tr.querySelector(`[data-k="${k}"]`).value;
+    return {ep: Number(v("ep")) || 0, pack: v("pack") ? Number(v("pack")) : null, count: Number(v("count")) || 1};
+  });
+}
+
+function show(tab) {
+  document.querySelectorAll("nav [role=tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  document.querySelectorAll("main section").forEach(s => s.hidden = s.id !== tab);
+  loaders[tab]().catch(e => say("Failed to load: " + e.message, "err"));
+}
+document.querySelectorAll("nav [role=tab]").forEach(b => b.addEventListener("click", () => show(b.dataset.tab)));
+
+$("#epForm").addEventListener("submit", e => e.preventDefault());
+$("#duplicatePlayersToggle").addEventListener("change", async e => {
+  const toggle = e.currentTarget, previous = !toggle.checked;
+  toggle.disabled = true;
+  try {
+    const saved = await api("duplicate_player_settings_set", {allow_duplicates: toggle.checked});
+    toggle.checked = saved.allow_duplicates;
+    $("#duplicateStatus").textContent = duplicateStatusText(saved.allow_duplicates);
+    say("Duplicate-player setting saved.", "ok");
+  } catch (err) {
+    toggle.checked = previous;
+    say("Failed: " + err.message, "err");
+  } finally { toggle.disabled = false; }
+});
+$("#epForm").addEventListener("click", e => {
+  const mode = e.target.dataset.mode; if (!mode) return;
+  e.preventDefault();
+  const raw = $("#epValue").value, n = Number(raw);
+  if (raw === "" || !Number.isFinite(n) || n < 0) return say("Please enter a valid EP amount.", "err");
+  const body = mode === "set" ? {set: n} : {add: mode === "sub" ? -n : n};
+  act(async () => { const r = await api("ep", body); await loaders.ringkasan(); say(`EP balance updated to ${fmt(r.ep)}.`, "ok"); });
+});
+
+$("#playerFilter").addEventListener("input", () => loaders.pemain());
+$("#playerRows").addEventListener("change", e => {
+  const id = e.target.dataset.grade; if (!id) return;
+  act(async () => { await api("player_grade", {id, grade: Number(e.target.value)}); await loaders.pemain(); }, "Player grade updated.");
+});
+$("#playerRows").addEventListener("click", e => {
+  const t = e.target;
+  if (t.dataset.team) act(async () => { await api("player_team", {id: t.dataset.team, team: t.dataset.to}); await loaders.pemain(); },
+                          t.dataset.to === "second" ? "Player moved to Reserves." : "Player returned to Main Team.");
+  if (t.dataset.remove && confirm(language === "vi" ? `Giải phóng ${t.dataset.name} khỏi đội? Thao tác này không thể hoàn tác.` : `Release ${t.dataset.name} from club? This cannot be undone.`))
+    act(async () => { await api("player_remove", {id: t.dataset.remove}); await loaders.pemain(); }, `${t.dataset.name} released from club.`);
+});
+
+$("#searchForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  try {
+    const q = encodeURIComponent($("#searchQ").value.trim());
+    const season = encodeURIComponent($("#playerSeasonFilter").value);
+    const result = await api(`search?q=${q}&season=${season}`);
+    const rows = season ? result.rows.filter(row => String(row.season) === season) : result.rows;
+    $("#searchRows").innerHTML = rows.map(r => {
+      const baseOvr = r.base_ovr ?? r.ovr;
+      const gradeValues = r.grade_values || PLAYER_GRADE_BOOST.slice(1).map((boost, index) => ({grade:index + 1, ovr:Number(baseOvr) + boost, price:Math.round(Number(r.price) * PLAYER_GRADE_PRICE[index + 1])}));
+      const initial = gradeValues.find(value => value.grade === 1) || {ovr:r.ovr, price:r.price};
+      return `<tr>
+      <td>${esc(r.name)} <span class="muted">${r.spid}</span></td><td>${esc((PLAYER_SEASONS.find(item => item.id === r.season) || {}).name || r.season)}</td><td>${r.pos}</td>
+      <td class="num" data-player-ovr>${initial.ovr}</td><td class="num" data-player-price>${fmt(initial.price)}</td><td>${r.market ? "Listed" : '<span class="muted">Unlisted</span>'}</td>
+      <td><select data-add-grade aria-label="Grade to add for ${esc(r.name)}">${gradeOpts(1)}</select><span class="grade-values" hidden>${esc(JSON.stringify(gradeValues))}</span></td>
+      <td><button class="b small primary" data-add="${r.spid}" data-name="${esc(r.name)}">Add to Club</button>
+          <button class="b small" data-gift="${r.spid}" data-name="${esc(r.name)}">Send via Bag</button></td>
+    </tr>`;
+    }).join("") || `<tr><td colspan="8" class="muted">No players found matching that name.</td></tr>`;
+    say(`${rows.length} cards found.`, "");
+  } catch (err) { say("Search failed: " + err.message, "err"); }
+});
+$("#searchRows").addEventListener("click", e => {
+  const t = e.target, grade = Number(t.closest("tr").querySelector("[data-add-grade]").value);
+  if (t.dataset.add) act(() => api("player_add", {spid: Number(t.dataset.add), grade}), `${t.dataset.name} +${grade} added to club (reserves).`);
+  if (t.dataset.gift) act(() => api("bag_send", {title: `Player: ${t.dataset.name}`, spid: Number(t.dataset.gift), grade}), `${t.dataset.name} +${grade} sent to Bag.`);
+});
+$("#searchRows").addEventListener("change", e => {
+  if (!e.target.matches("[data-add-grade]")) return;
+  const row = e.target.closest("tr"), grade = Number(e.target.value);
+  const values = JSON.parse(row.querySelector(".grade-values").textContent || "[]");
+  const selected = values.find(item => item.grade === grade);
+  if (selected) {
+    row.querySelector("[data-player-ovr]").textContent = selected.ovr;
+    row.querySelector("[data-player-price]").textContent = fmt(selected.price);
+  }
+});
+$("#staffSearchForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  try {
+    const q = encodeURIComponent($("#staffSearchQ").value.trim());
+    const task = encodeURIComponent($("#staffTask").value);
+    const {rows} = await api(`staff_search?q=${q}&type=${task}`);
+    $("#staffSearchRows").innerHTML = rows.map(r => { const stats = (r.boost_groups || []).map(group => group[Math.floor(Math.random() * group.length)]); return `<tr>
+      <td>${esc(r.name)}</td><td>${esc(coachDuty(r.position))}</td><td data-boost-stats="${esc(JSON.stringify(stats))}">${renderCoachBoosts(stats, 2)}</td>
+      <td><select data-staff-grade aria-label="Stars to add for ${esc(r.name)}">${coachStarOpts(2)}</select></td>
+      <td><button class="b small primary" data-staff-add="${r.stfid}" data-staff-name="${esc(r.name)}">${tr("addClub")}</button></td>
+    </tr>`; }).join("") || `<tr><td colspan="5" class="muted">${tr("staffNone")}</td></tr>`;
+    say(`${rows.length}${tr("staffFound")}`, "");
+  } catch (err) { say((language === "vi" ? "Tìm HLV thất bại: " : "Coach search failed: ") + err.message, "err"); }
+});
+$("#staffSearchRows").addEventListener("change", e => {
+  if (!e.target.matches("[data-staff-grade]")) return;
+  const cell = e.target.closest("tr").querySelector("[data-boost-stats]");
+  cell.innerHTML = renderCoachBoosts(JSON.parse(cell.dataset.boostStats || "[]"), Number(e.target.value));
+});
+$("#staffSearchRows").addEventListener("click", e => {
+  const t = e.target;
+  if (!t.dataset.staffAdd) return;
+  const grade = Number(t.closest("tr").querySelector("[data-staff-grade]").value);
+  const stars = grade / 2;
+  const row = t.closest("tr"), stats = JSON.parse(row.querySelector("[data-boost-stats]").dataset.boostStats || "[]").slice(0, Math.min(3, grade));
+  act(async () => { await api("staff_add", {stfid: Number(t.dataset.staffAdd), grade, selected_effects: stats}); await loaders.ringkasan(); },
+      `${t.dataset.staffName} (${stars} ${tr(stars === 1 ? "star" : "stars")})${tr("added")}`);
+});
+
+$("#packForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#packSel").selectedOptions[0].text, count = Number($("#packCount").value);
+  act(() => api("give_pack", {itemid: Number($("#packSel").value), count}), `${count}× ${name} added to My Items.`);
+});
+$("#bagForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const body = {title: $("#bagTitle").value, ep: Number($("#bagEp").value) || 0, pack: $("#bagPack").value ? Number($("#bagPack").value) : null,
+                count: Number($("#bagCount").value) || 1, spid: $("#bagSpid").value ? Number($("#bagSpid").value) : null, grade: Number($("#bagGrade").value)};
+  act(() => api("bag_send", body), `Gift "${body.title}" sent to Bag.`);
+});
+
+$("#dailyRows").addEventListener("click", e => {
+  const i = e.target.dataset.drop; if (i === undefined) return;
+  const t = readDaily(); t.splice(Number(i), 1); renderDaily(t);
+});
+$("#dailyAdd").addEventListener("click", () => { const t = readDaily(); t.push({ep: 10000}); renderDaily(t); });
+$("#dailySave").addEventListener("click", () => act(async () => { await api("daily_set", {table: readDaily()}); await loaders.harian(); }, "Daily reward table saved."));
+$("#dailyGrant").addEventListener("click", () => act(async () => { const r = await api("daily_grant", {}); await loaders.harian(); say(`"${r.title}" sent to Bag.`, "ok"); }));
+$("#dailyReset").addEventListener("click", () => { if (confirm("Reset login streak to 0?")) act(async () => { await api("daily_reset", {}); await loaders.harian(); }, "Streak reset."); });
+$("#scoutReset").addEventListener("click", () => act(async () => { await api("scouts_reset", {}); await loaders.scout(); }, "All scouts are ready to use."));
+$("#logRefresh").addEventListener("click", () => loaders.log());
+setInterval(() => { if ($("#logAuto").checked && !$("#log").hidden) loaders.log(); }, 3000);
+
+$("#bagGrade").innerHTML = gradeOpts(1); renderStaffTasks();
+const PLAYER_GRADE_BOOST = [0, 5, 6, 7, 8, 10, 12, 14, 17, 20, 24];
+const PLAYER_GRADE_PRICE = [0, 1, 2.65, 7.1, 19.6, 53, 162, 420, 1090, 2680, 6290];
+const PLAYER_SEASONS = [{"id": 97, "name": "Legendary"}, {"id": 95, "name": "2002 Legend"}, {"id": 93, "name": "World Legend"}, {"id": 91, "name": "World Best"}, {"id": 89, "name": "Season 89"}, {"id": 88, "name": "Mùa thường 2017"}, {"id": 87, "name": "Chinese Super League 2016"}, {"id": 85, "name": "Chinese Super League 2015"}, {"id": 83, "name": "14 Chinese Super League"}, {"id": 82, "name": "Chinese Super League 2017"}, {"id": 81, "name": "Season 81"}, {"id": 77, "name": "World Cup 2014"}, {"id": 73, "name": "VN STAR"}, {"id": 71, "name": "MY Legend"}, {"id": 69, "name": "UEFA Champions League 2010"}, {"id": 67, "name": "UEFA Euro 2008"}, {"id": 65, "name": "World Cup 2006"}, {"id": 63, "name": "UEFA Champions League 2006"}, {"id": 61, "name": "VN Legend"}, {"id": 57, "name": "พิเศษ"}, {"id": 55, "name": "United Ambassador"}, {"id": 53, "name": "Team of the Season 2014"}, {"id": 51, "name": "ตำนานไทย"}, {"id": 49, "name": "Season 49"}, {"id": 48, "name": "Man Utd Legend"}, {"id": 47, "name": "World Cup 2010"}, {"id": 45, "name": "16TH"}, {"id": 44, "name": "Thailand Best 2017"}, {"id": 43, "name": "ID Legend"}, {"id": 42, "name": "ID BEST"}, {"id": 41, "name": "2016"}, {"id": 40, "name": "National Hero Debut"}, {"id": 39, "name": "02 Chinese Legend"}, {"id": 38, "name": "Season 38"}, {"id": 37, "name": "K League The Classic"}, {"id": 35, "name": "European Championship 2016"}, {"id": 33, "name": "Season 33"}, {"id": 32, "name": "TC Legend"}, {"id": 31, "name": "Season 31"}, {"id": 30, "name": "Ultimate Legend"}, {"id": 29, "name": "Season 29"}, {"id": 28, "name": "Ultimate Best"}, {"id": 27, "name": "EU Legend"}, {"id": 26, "name": "Europe Legend"}, {"id": 24, "name": "Continental Champion"}, {"id": 23, "name": "Loyal Player"}, {"id": 22, "name": "Captain Player"}, {"id": 21, "name": "Ultimate Tiger"}, {"id": 20, "name": "Season 20"}, {"id": 16, "name": "Mùa thường 2016"}, {"id": 15, "name": "Mùa thường 2015"}, {"id": 14, "name": "Mùa thường 2014"}, {"id": 11, "name": "Mùa thường 2011"}, {"id": 10, "name": "Mùa thường 2010"}, {"id": 9, "name": "Mùa thường 2009"}, {"id": 8, "name": "Mùa thường 2008"}, {"id": 7, "name": "Mùa thường 2007"}, {"id": 6, "name": "Mùa thường 2006"}, {"id": 0, "name": "Base Season"}]
+const renderPlayerSeasons = seasons => {
+  const select = $("#playerSeasonFilter"), selected = select.value;
+  select.innerHTML = `<option value="">${esc(tr("allSeasons"))}</option>` + seasons.map(item => { const season = typeof item === "number" ? {id:item, name:`Season ${item}`} : item; return `<option value="${season.id}">${esc(season.name)} (${season.id})</option>`; }).join("");
+  select.value = selected;
+};
+renderPlayerSeasons(PLAYER_SEASONS);
+playerSeasonsReady = api("player_seasons").then(j => renderPlayerSeasons(j.seasons)).catch(() => {});
+staffTasksReady = api("staff_tasks").then(j => renderStaffTasks(j.tasks)).catch(() => {});
+packsReady = api("packs").then(j => {
+  packs = j.packs;
+  $("#packSel").innerHTML = packOpts();
+  $("#bagPack").innerHTML = '<option value="">No pack</option>' + packOpts();
+}).catch(e => say("Failed to load packs list: " + e.message, "err"));
+
+function renderEnhanceStatus() {
+  const rate = window.currentEnhanceRate;
+  if (rate === undefined) { $("#enhanceStatus").textContent = tr("enhanceLoading"); return; }
+  $("#enhanceStatus").textContent = rate === null ? tr("originalRate") : tr("activeRate") + rate + "%";
+}
+function renderEnhance(j) {
+  const rate = j.success_percent;
+  window.currentEnhanceRate = rate;
+  $("#enhanceRate").value = rate === null ? 50 : rate;
+  $("#enhanceValue").textContent = $("#enhanceRate").value + "%";
+  renderEnhanceStatus();
+}
+$("#languageSelect").addEventListener("change", e => setLanguage(e.target.value));
+$("#enhanceRate").addEventListener("input", () => { $("#enhanceValue").textContent = $("#enhanceRate").value + "%"; });
+$("#enhanceSave").addEventListener("click", () => act(async () => {
+  renderEnhance(await api("enhancement_settings_set", {success_percent: Number($("#enhanceRate").value)}));
+}, tr("saved")));
+$("#enhanceDefault").addEventListener("click", () => act(async () => {
+  renderEnhance(await api("enhancement_settings_set", {success_percent: null}));
+}, tr("restored")));
+setLanguage(language);
+new MutationObserver(records => {
+  for (const record of records) for (const node of record.addedNodes) {
+    if (node.nodeType === Node.TEXT_NODE) translateTextTree(node.parentElement || document);
+    else if (node.nodeType === Node.ELEMENT_NODE) translateTextTree(node);
+  }
+}).observe(document.body, {childList:true, subtree:true});
+loadUsers().then(() => show("ringkasan"));
+</script>
+
+<div id="addUserModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(3px);">
+  <div style="background:#1e293b;border:1px solid #475569;border-radius:12px;padding:24px;width:380px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;">
+    <h3 style="margin:0 0 16px;font-size:18px;color:#38bdf8;font-weight:700;">Tạo Tài Khoản Người Dùng Mới</h3>
+    <div style="margin-bottom:12px;">
+      <label style="display:block;font-size:12px;margin-bottom:4px;color:#94a3b8;font-weight:600;">Tên đăng nhập (3-24 ký tự):</label>
+      <input type="text" id="modalUsername" placeholder="ví dụ: fo3user01" style="width:100%;box-sizing:border-box;padding:8px 12px;background:#0f172a;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:14px;outline:none;">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label style="display:block;font-size:12px;margin-bottom:4px;color:#94a3b8;font-weight:600;">Tên HLV hiển thị:</label>
+      <input type="text" id="modalCoachName" placeholder="ví dụ: HLV VIP" style="width:100%;box-sizing:border-box;padding:8px 12px;background:#0f172a;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:14px;outline:none;">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label style="display:block;font-size:12px;margin-bottom:4px;color:#94a3b8;font-weight:600;">Mật khẩu:</label>
+      <input type="password" id="modalPassword" value="123456" style="width:100%;box-sizing:border-box;padding:8px 12px;background:#0f172a;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:14px;outline:none;">
+    </div>
+    <div style="margin-bottom:20px;">
+      <label style="display:block;font-size:12px;margin-bottom:4px;color:#94a3b8;font-weight:600;">Số EP khởi tạo:</label>
+      <input type="number" id="modalEp" value="100000000" step="10000000" style="width:100%;box-sizing:border-box;padding:8px 12px;background:#0f172a;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:14px;outline:none;">
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;">
+      <button type="button" onclick="closeAddUserDialog()" style="background:#475569;border:none;border-radius:6px;padding:8px 16px;color:#f8fafc;font-weight:600;cursor:pointer;">Hủy</button>
+      <button type="button" onclick="submitAddUser()" style="background:#0284c7;border:none;border-radius:6px;padding:8px 20px;color:#fff;font-weight:bold;cursor:pointer;">+ Tạo tài khoản</button>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
