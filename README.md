@@ -58,9 +58,14 @@ Dữ liệu người dùng nằm trong SQLite `fo3_users.db` (tự tạo khi ch�
 ## 3. Dữ liệu game
 
 Server cần các thư mục `gamedata/`, `responses/`, `assets/` đặt cạnh mã
-nguồn. Đây là dữ liệu trích xuất từ client FO3 (CSDL cầu thủ, bảng giá,
-ảnh…) — mỗi người vận hành tự trích từ bản client của mình bằng các công
-cụ trong `tools/re/` (đọc `data_*.big`, `fifa_ng_db.db` của client).
+nguồn. Các bảng dữ liệu dạng text trong `gamedata/` (formations, bảng
+giá, catalog…) và toàn bộ `responses/` **đã kèm trong repo** — server
+đọc chúng lúc chạy, thiếu là lỗi. Hai thứ repo không chứa: **CSDL cầu
+thủ dạng nhị phân** (`gamedata/fifadb.sqlite`) và **thư mục ảnh**
+`assets/` (emblem, ảnh cầu thủ/vật phẩm trích từ client) — mỗi người
+vận hành tự trích hai phần này từ bản client của mình bằng các công cụ
+trong `tools/re/` (đọc `data_*.big`, `fifa_ng_db.db` của client);
+thiếu ảnh server vẫn chạy, chỉ có một số hình hiển thị trống.
 
 ## 4. Chạy server
 

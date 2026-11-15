@@ -1,0 +1,18 @@
+[
+  {"name": "LEGENDARY_S", "rating": 2400, "mingames": 5},
+  {"name": "LEGENDARY_A", "rating": 2200, "mingames": 5},
+  {"name": "LEGENDARY_B", "rating": 2100, "mingames": 5},
+  {"name": "LEGENDARY_C", "rating": 2000, "mingames": 5},
+  {"name": "WORLDCLASS_A", "rating": 1900, "mingames": 5},
+  {"name": "WORLDCLASS_B", "rating": 1800, "mingames": 5},
+  {"name": "WORLDCLASS_C", "rating": 1700, "mingames": 5},
+  {"name": "PROFESSIONAL_A", "rating": 1600, "mingames": 5},
+  {"name": "PROFESSIONAL_B", "rating": 1500, "mingames": 5},
+  {"name": "PROFESSIONAL_C", "rating": 1400, "mingames": 5},
+  {"name": "SEMIPRO_A", "rating": 1300, "mingames": 5},
+  {"name": "SEMIPRO_B", "rating": 1200, "mingames": 5},
+  {"name": "SEMIPRO_C", "rating": 1100, "mingames": 5},
+  {"name": "AMATEUR_A", "rating": 1000, "mingames": 5},
+  {"name": "AMATEUR_B", "rating": 900, "mingames": 5},
+  {"name": "AMATEUR_C", "rating": 0, "mingames": 5}
+]

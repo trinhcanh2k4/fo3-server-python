@@ -1,0 +1,201 @@
+{
+  "result": true,
+  "option": {
+    "soundOption": {},
+    "screenOption": {
+      "Quality": 0
+    },
+    "aiOption": {},
+    "cameraOption": {}
+  },
+  "features": {
+    "vip": {},
+    "messenger": {},
+    "systemmessage": {},
+    "chatting": {
+      "board": {
+        "channel": {},
+        "whisper": {},
+        "club": {},
+        "cup": {}
+      },
+      "list": {
+        "blacklist": {},
+        "clubmember": {}
+      }
+    },
+    "contact": {},
+    "antifairplaychecker": {},
+    "teamcolor": {},
+    "teammanagement": {
+      "playermanagement": {
+        "playerpool": {},
+        "enhancement": {
+          "v2_5": {}
+        },
+        "trade": {},
+        "trade3": {},
+        "craft": {}
+      },
+      "team": {
+        "teaminfo": {}
+      },
+      "teammanagement": {
+        "squad": {},
+        "tactic": {},
+        "playerrole": {}
+      },
+      "staffmanagement": {
+        "staffroles": {},
+        "staffupgrade": {},
+        "staffbuy": {},
+        "staffstudy": {}
+      }
+    },
+    "mainmenu": {
+      "coachinfo": {},
+      "cupshotcut": {},
+      "item": {},
+      "shop": {},
+      "transfermarket": {},
+      "singlemode": {
+        "league": {},
+        "cup": {},
+        "rtw": {}
+      },
+      "multimode": {
+        "ladder1on1": {},
+        "manager": {},
+        "ladder": {},
+        "friendly": {},
+        "exhibition": {}
+      },
+      "teammanagement": {
+        "teaminfo": {},
+        "locker": {},
+        "loansquad": {},
+        "liveboost": {}
+      },
+      "club": {}
+    },
+    "freeroambuttons": {
+      "keyguide": {},
+      "options": {},
+      "tutorialgroup": {},
+      "quest": {}
+    },
+    "community": {
+      "myclub": {
+        "clubinfo": {},
+        "members": {}
+      },
+      "clubmanagement": {
+        "clubmanagement": {}
+      },
+      "findclub": {
+        "clublist": {}
+      },
+      "clubrecord": {
+        "recordmember": {},
+        "recordopponent": {},
+        "recordrecent": {},
+        "recordleaderborad": {}
+      }
+    },
+    "item": {
+      "item": {
+        "playerpack": {},
+        "use": {},
+        "depot": {},
+        "bag": {}
+      },
+      "exchange": {}
+    },
+    "shop": {
+      "shop": {
+        "recommendation": {},
+        "playerpack": {},
+        "use": {},
+        "package": {},
+        "chain": {}
+      },
+      "special": {},
+      "vip": {},
+      "vvip": {},
+      "mshop": {},
+      "monthly": {}
+    },
+    "leaguematch": {
+      "leaguematch": {},
+      "leaguerecord": {},
+      "cuprecord": {}
+    },
+    "leaguematch.leaguerecord": {
+      "rank": {},
+      "round": {},
+      "record": {},
+      "totalrecord": {}
+    },
+    "leaguematch.cuprecord": {
+      "cupqualifier": {},
+      "cupfinal": {},
+      "record": {},
+      "totalrecord": {}
+    },
+    "transfermarket": {
+      "transfermarket": {
+        "purchase": {},
+        "sale": {},
+        "myofferlist": {}
+      }
+    },
+    "coachinfo": {
+      "coachinfo": {
+        "summary": {},
+        "totalrecord": {},
+        "multiresult": {}
+      },
+      "achievement": {},
+      "ranking": {}
+    },
+    "usercoachinfo": {
+      "summary": {},
+      "squad": {},
+      "badge": {}
+    },
+    "laddermatch": {
+      "vs1": {},
+      "vs2": {},
+      "vs3": {},
+      "roleplay3vs3": {},
+      "mgr1": {}
+    },
+    "friendlymatch": {
+      "managermode": {
+        "vsrandom": {}
+      },
+      "quickmatch": {},
+      "randommatch": {},
+      "custommatch": {}
+    },
+    "livecenter": {},
+    "manager2": {
+      "overlay": {}
+    }
+  },
+  "permissions": [
+    "Create2ndCoach"
+  ],
+  "guides": [
+    "setcontroller",
+    "create",
+    "league",
+    "recontract",
+    "swap",
+    "use"
+  ],
+  "tutorials": [],
+  "coaches": [],
+  "lockinfo": {},
+  "fatiguerate": 1
+}

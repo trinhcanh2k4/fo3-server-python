@@ -1,0 +1,55 @@
+{
+  "repaired": [
+    {
+      "filename": "p22020801.png",
+      "playerid": 20801,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p23020801.png",
+      "playerid": 20801,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p24020801.png",
+      "playerid": 20801,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p24028130.png",
+      "playerid": 28130,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p65010264.png",
+      "playerid": 10264,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p93000240.png",
+      "playerid": 240,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p93000241.png",
+      "playerid": 241,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p93190043.png",
+      "playerid": 190043,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p93192181.png",
+      "playerid": 192181,
+      "method": "base-player portrait"
+    },
+    {
+      "filename": "p93226764.png",
+      "playerid": 226764,
+      "method": "base-player portrait"
+    }
+  ],
+  "unavailable": []
+}
