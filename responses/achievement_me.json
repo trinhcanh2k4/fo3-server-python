@@ -1,0 +1,2358 @@
+{
+  "summary": {
+    "done": 0,
+    "total": 7
+  },
+  "achievement": [
+    {
+      "id": "ach_1_1",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 2,
+        "total": 2,
+        "todo": 2,
+        "detail": {
+          "current": 2,
+          "total": 2
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 1,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 6,
+        "todo": 6,
+        "detail": {
+          "current": 1,
+          "total": 6
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 8,
+        "todo": 8,
+        "detail": {
+          "current": 1,
+          "total": 8
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 10,
+        "todo": 10,
+        "detail": {
+          "current": 1,
+          "total": 10
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 1,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 12,
+        "todo": 12,
+        "detail": {
+          "current": 1,
+          "total": 12
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 15,
+        "todo": 15,
+        "detail": {
+          "current": 1,
+          "total": 15
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 18,
+        "todo": 18,
+        "detail": {
+          "current": 1,
+          "total": 18
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 21,
+        "todo": 21,
+        "detail": {
+          "current": 1,
+          "total": 21
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 25,
+        "todo": 25,
+        "detail": {
+          "current": 1,
+          "total": 25
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 0,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 30,
+        "todo": 30,
+        "detail": {
+          "current": 1,
+          "total": 30
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 35,
+        "todo": 35,
+        "detail": {
+          "current": 1,
+          "total": 35
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 40,
+        "todo": 40,
+        "detail": {
+          "current": 1,
+          "total": 40
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 45,
+        "todo": 45,
+        "detail": {
+          "current": 1,
+          "total": 45
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 50,
+        "todo": 50,
+        "detail": {
+          "current": 1,
+          "total": 50
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 55,
+        "todo": 55,
+        "detail": {
+          "current": 1,
+          "total": 55
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 60,
+        "todo": 60,
+        "detail": {
+          "current": 1,
+          "total": 60
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 65,
+        "todo": 65,
+        "detail": {
+          "current": 1,
+          "total": 65
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 70,
+        "todo": 70,
+        "detail": {
+          "current": 1,
+          "total": 70
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 75,
+        "todo": 75,
+        "detail": {
+          "current": 1,
+          "total": 75
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 80,
+        "todo": 80,
+        "detail": {
+          "current": 1,
+          "total": 80
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 85,
+        "todo": 85,
+        "detail": {
+          "current": 1,
+          "total": 85
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 90,
+        "todo": 90,
+        "detail": {
+          "current": 1,
+          "total": 90
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 95,
+        "todo": 95,
+        "detail": {
+          "current": 1,
+          "total": 95
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 98,
+        "todo": 98,
+        "detail": {
+          "current": 1,
+          "total": 98
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 100,
+        "todo": 100,
+        "detail": {
+          "current": 1,
+          "total": 100
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_1",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_2",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 11,
+        "todo": 11,
+        "detail": {
+          "current": 0,
+          "total": 11
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_4",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 3,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 3,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach_1_1",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 2,
+        "total": 2,
+        "todo": 2,
+        "detail": {
+          "current": 2,
+          "total": 2
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 1,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 6,
+        "todo": 6,
+        "detail": {
+          "current": 1,
+          "total": 6
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 8,
+        "todo": 8,
+        "detail": {
+          "current": 1,
+          "total": 8
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 10,
+        "todo": 10,
+        "detail": {
+          "current": 1,
+          "total": 10
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 1,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 12,
+        "todo": 12,
+        "detail": {
+          "current": 1,
+          "total": 12
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 15,
+        "todo": 15,
+        "detail": {
+          "current": 1,
+          "total": 15
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 18,
+        "todo": 18,
+        "detail": {
+          "current": 1,
+          "total": 18
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 21,
+        "todo": 21,
+        "detail": {
+          "current": 1,
+          "total": 21
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 25,
+        "todo": 25,
+        "detail": {
+          "current": 1,
+          "total": 25
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 0,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 30,
+        "todo": 30,
+        "detail": {
+          "current": 1,
+          "total": 30
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 35,
+        "todo": 35,
+        "detail": {
+          "current": 1,
+          "total": 35
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 40,
+        "todo": 40,
+        "detail": {
+          "current": 1,
+          "total": 40
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 45,
+        "todo": 45,
+        "detail": {
+          "current": 1,
+          "total": 45
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 50,
+        "todo": 50,
+        "detail": {
+          "current": 1,
+          "total": 50
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 55,
+        "todo": 55,
+        "detail": {
+          "current": 1,
+          "total": 55
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 60,
+        "todo": 60,
+        "detail": {
+          "current": 1,
+          "total": 60
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 65,
+        "todo": 65,
+        "detail": {
+          "current": 1,
+          "total": 65
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 70,
+        "todo": 70,
+        "detail": {
+          "current": 1,
+          "total": 70
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 75,
+        "todo": 75,
+        "detail": {
+          "current": 1,
+          "total": 75
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 80,
+        "todo": 80,
+        "detail": {
+          "current": 1,
+          "total": 80
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 85,
+        "todo": 85,
+        "detail": {
+          "current": 1,
+          "total": 85
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_5",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_1",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 90,
+        "todo": 90,
+        "detail": {
+          "current": 1,
+          "total": 90
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_2",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 95,
+        "todo": 95,
+        "detail": {
+          "current": 1,
+          "total": 95
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 98,
+        "todo": 98,
+        "detail": {
+          "current": 1,
+          "total": 98
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6_4",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 100,
+        "todo": 100,
+        "detail": {
+          "current": 1,
+          "total": 100
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "ach_6",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 0,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_1",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_2",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_3",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 11,
+        "todo": 11,
+        "detail": {
+          "current": 0,
+          "total": 11
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc_4",
+      "complete": true,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": "misc",
+      "complete": false,
+      "completedat": "2026-11-07T12:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 3,
+        "total": 4,
+        "todo": 4,
+        "detail": {
+          "current": 3,
+          "total": 4
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    }
+  ],
+  "quest": [
+    {
+      "id": 0,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 1,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 2,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 3,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 4,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 5,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 6,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 11,
+        "todo": 11,
+        "detail": {
+          "current": 0,
+          "total": 11
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 7,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 1,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 8,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 10,
+        "todo": 10,
+        "detail": {
+          "current": 1,
+          "total": 10
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 9,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 20,
+        "todo": 20,
+        "detail": {
+          "current": 1,
+          "total": 20
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    }
+  ],
+  "quests": [
+    {
+      "id": 0,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 1,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 2,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 3,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 4,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 5,
+      "complete": true,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 1,
+        "todo": 1,
+        "detail": {
+          "current": 1,
+          "total": 1
+        }
+      },
+      "rewards": {
+        "available": true,
+        "grade": 1
+      }
+    },
+    {
+      "id": 6,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 0,
+        "total": 11,
+        "todo": 11,
+        "detail": {
+          "current": 0,
+          "total": 11
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 7,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 5,
+        "todo": 5,
+        "detail": {
+          "current": 1,
+          "total": 5
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 8,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 10,
+        "todo": 10,
+        "detail": {
+          "current": 1,
+          "total": 10
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    },
+    {
+      "id": 9,
+      "complete": false,
+      "completedat": "2026-11-01T00:00:00.000Z",
+      "progress": {
+        "grade": 1,
+        "current": 1,
+        "total": 20,
+        "todo": 20,
+        "detail": {
+          "current": 1,
+          "total": 20
+        }
+      },
+      "rewards": {
+        "available": false,
+        "grade": 1
+      }
+    }
+  ],
+  "questbank": {
+    "expire": [
+      "2030-01-01T00:00:00.000Z",
+      "2030-01-02T00:00:00.000Z"
+    ],
+    "current": [
+      {
+        "id": 0,
+        "name": "\u0110i\u1ec3m Danh H\u1eb1ng Ng\u00e0y",
+        "desc": "\u0110\u0103ng nh\u1eadp v\u00e0 qu\u1ea3n l\u00fd \u0111\u1ed9i b\u00f3ng h\u00e0ng ng\u00e0y.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 50000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 1,
+        "name": "Th\u1eed S\u1ee9c Thi \u0110\u1ea5u",
+        "desc": "Tham gia 1 tr\u1eadn \u0111\u1ea5u b\u1ea5t k\u1ef3 (PVP, Gi\u1ea3 L\u1eadp ho\u1eb7c \u0110\u1ea5u Gi\u1ea3i).",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 60000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 2,
+        "name": "Kh\u00e1t Khao Chi\u1ebfn Th\u1eafng",
+        "desc": "Gi\u00e0nh chi\u1ebfn th\u1eafng \u00edt nh\u1ea5t 1 tr\u1eadn \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 80000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 3,
+        "name": "\u0110\u1ea5u Tr\u01b0\u1eddng X\u1ebfp H\u1ea1ng",
+        "desc": "Tham gia tranh t\u00e0i \u1edf ch\u1ebf \u0111\u1ed9 \u0110\u1ea5u X\u1ebfp H\u1ea1ng 1v1.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 100000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 4,
+        "name": "Chi\u1ebfn Thu\u1eadt B\u1eadc Th\u1ea7y",
+        "desc": "Thi\u1ebft l\u1eadp v\u00e0 l\u01b0u 6 chi\u1ebfn thu\u1eadt \u0111\u1ed9i b\u00f3ng ph\u00f9 h\u1ee3p.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 70000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 5,
+        "name": "N\u00e2ng C\u1ea5p \u0110\u1ed9i H\u00ecnh",
+        "desc": "N\u00e2ng c\u1ea5p v\u00e0 t\u0103ng c\u01b0\u1eddng s\u1ee9c m\u1ea1nh c\u1ea7u th\u1ee7 trong \u0111\u1ed9i.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 90000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 6,
+        "name": "M\u1edf R\u1ed9ng C\u00e2u L\u1ea1c B\u1ed9",
+        "desc": "S\u1edf h\u1eefu t\u1ed1i thi\u1ec3u 11 c\u1ea7u th\u1ee7 trong danh s\u00e1ch \u0111\u1ed9i b\u00f3ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 0,
+        "todo": 11,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 120000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 7,
+        "name": "HLV Tri\u1ec3n V\u1ecdng Lv.5",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.5 \u0111\u1ec3 m\u1edf kh\u00f3a k\u1ef9 n\u0103ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 5,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 150000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 8,
+        "name": "HLV Chuy\u00ean Nghi\u1ec7p Lv.10",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.10 kh\u1eb3ng \u0111\u1ecbnh v\u1ecb th\u1ebf.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 10,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 200000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 9,
+        "name": "HLV \u0110\u1eb3ng C\u1ea5p Lv.20",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.20 v\u00e0 th\u1ed1ng tr\u1ecb gi\u1ea3i \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 20,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 300000
+        },
+        "rewardedmp": 0,
+        "received": false
+      }
+    ],
+    "next": [
+      {
+        "id": 0,
+        "name": "\u0110i\u1ec3m Danh H\u1eb1ng Ng\u00e0y",
+        "desc": "\u0110\u0103ng nh\u1eadp v\u00e0 qu\u1ea3n l\u00fd \u0111\u1ed9i b\u00f3ng h\u00e0ng ng\u00e0y.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 50000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 1,
+        "name": "Th\u1eed S\u1ee9c Thi \u0110\u1ea5u",
+        "desc": "Tham gia 1 tr\u1eadn \u0111\u1ea5u b\u1ea5t k\u1ef3 (PVP, Gi\u1ea3 L\u1eadp ho\u1eb7c \u0110\u1ea5u Gi\u1ea3i).",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 60000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 2,
+        "name": "Kh\u00e1t Khao Chi\u1ebfn Th\u1eafng",
+        "desc": "Gi\u00e0nh chi\u1ebfn th\u1eafng \u00edt nh\u1ea5t 1 tr\u1eadn \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 80000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 3,
+        "name": "\u0110\u1ea5u Tr\u01b0\u1eddng X\u1ebfp H\u1ea1ng",
+        "desc": "Tham gia tranh t\u00e0i \u1edf ch\u1ebf \u0111\u1ed9 \u0110\u1ea5u X\u1ebfp H\u1ea1ng 1v1.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 100000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 4,
+        "name": "Chi\u1ebfn Thu\u1eadt B\u1eadc Th\u1ea7y",
+        "desc": "Thi\u1ebft l\u1eadp v\u00e0 l\u01b0u 6 chi\u1ebfn thu\u1eadt \u0111\u1ed9i b\u00f3ng ph\u00f9 h\u1ee3p.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 70000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 5,
+        "name": "N\u00e2ng C\u1ea5p \u0110\u1ed9i H\u00ecnh",
+        "desc": "N\u00e2ng c\u1ea5p v\u00e0 t\u0103ng c\u01b0\u1eddng s\u1ee9c m\u1ea1nh c\u1ea7u th\u1ee7 trong \u0111\u1ed9i.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 90000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 6,
+        "name": "M\u1edf R\u1ed9ng C\u00e2u L\u1ea1c B\u1ed9",
+        "desc": "S\u1edf h\u1eefu t\u1ed1i thi\u1ec3u 11 c\u1ea7u th\u1ee7 trong danh s\u00e1ch \u0111\u1ed9i b\u00f3ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 0,
+        "todo": 11,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 120000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 7,
+        "name": "HLV Tri\u1ec3n V\u1ecdng Lv.5",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.5 \u0111\u1ec3 m\u1edf kh\u00f3a k\u1ef9 n\u0103ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 5,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 150000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 8,
+        "name": "HLV Chuy\u00ean Nghi\u1ec7p Lv.10",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.10 kh\u1eb3ng \u0111\u1ecbnh v\u1ecb th\u1ebf.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 10,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 200000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 9,
+        "name": "HLV \u0110\u1eb3ng C\u1ea5p Lv.20",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.20 v\u00e0 th\u1ed1ng tr\u1ecb gi\u1ea3i \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 20,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 300000
+        },
+        "rewardedmp": 0,
+        "received": false
+      }
+    ],
+    "list": [
+      {
+        "id": 0,
+        "name": "\u0110i\u1ec3m Danh H\u1eb1ng Ng\u00e0y",
+        "desc": "\u0110\u0103ng nh\u1eadp v\u00e0 qu\u1ea3n l\u00fd \u0111\u1ed9i b\u00f3ng h\u00e0ng ng\u00e0y.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 50000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 1,
+        "name": "Th\u1eed S\u1ee9c Thi \u0110\u1ea5u",
+        "desc": "Tham gia 1 tr\u1eadn \u0111\u1ea5u b\u1ea5t k\u1ef3 (PVP, Gi\u1ea3 L\u1eadp ho\u1eb7c \u0110\u1ea5u Gi\u1ea3i).",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 60000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 2,
+        "name": "Kh\u00e1t Khao Chi\u1ebfn Th\u1eafng",
+        "desc": "Gi\u00e0nh chi\u1ebfn th\u1eafng \u00edt nh\u1ea5t 1 tr\u1eadn \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 80000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 3,
+        "name": "\u0110\u1ea5u Tr\u01b0\u1eddng X\u1ebfp H\u1ea1ng",
+        "desc": "Tham gia tranh t\u00e0i \u1edf ch\u1ebf \u0111\u1ed9 \u0110\u1ea5u X\u1ebfp H\u1ea1ng 1v1.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 100000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 4,
+        "name": "Chi\u1ebfn Thu\u1eadt B\u1eadc Th\u1ea7y",
+        "desc": "Thi\u1ebft l\u1eadp v\u00e0 l\u01b0u 6 chi\u1ebfn thu\u1eadt \u0111\u1ed9i b\u00f3ng ph\u00f9 h\u1ee3p.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 70000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 5,
+        "name": "N\u00e2ng C\u1ea5p \u0110\u1ed9i H\u00ecnh",
+        "desc": "N\u00e2ng c\u1ea5p v\u00e0 t\u0103ng c\u01b0\u1eddng s\u1ee9c m\u1ea1nh c\u1ea7u th\u1ee7 trong \u0111\u1ed9i.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 1,
+        "complete": true,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "complete",
+        "reward": {
+          "count": 90000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 6,
+        "name": "M\u1edf R\u1ed9ng C\u00e2u L\u1ea1c B\u1ed9",
+        "desc": "S\u1edf h\u1eefu t\u1ed1i thi\u1ec3u 11 c\u1ea7u th\u1ee7 trong danh s\u00e1ch \u0111\u1ed9i b\u00f3ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 0,
+        "todo": 11,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 120000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 7,
+        "name": "HLV Tri\u1ec3n V\u1ecdng Lv.5",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.5 \u0111\u1ec3 m\u1edf kh\u00f3a k\u1ef9 n\u0103ng.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 5,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 150000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 8,
+        "name": "HLV Chuy\u00ean Nghi\u1ec7p Lv.10",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.10 kh\u1eb3ng \u0111\u1ecbnh v\u1ecb th\u1ebf.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 10,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 200000
+        },
+        "rewardedmp": 0,
+        "received": false
+      },
+      {
+        "id": 9,
+        "name": "HLV \u0110\u1eb3ng C\u1ea5p Lv.20",
+        "desc": "\u0110\u1ea1t c\u1ea5p \u0111\u1ed9 Hu\u1ea5n Luy\u1ec7n Vi\u00ean Lv.20 v\u00e0 th\u1ed1ng tr\u1ecb gi\u1ea3i \u0111\u1ea5u.",
+        "type": "challenge",
+        "platform": "pc",
+        "current": 1,
+        "todo": 20,
+        "complete": false,
+        "completedat": "2026-11-01T00:00:00.000Z",
+        "state": "ongoing",
+        "reward": {
+          "count": 300000
+        },
+        "rewardedmp": 0,
+        "received": false
+      }
+    ]
+  },
+  "questRewards": [
+    {
+      "gp": 100,
+      "reward": [
+        {
+          "itemid": 1,
+          "count": 100000
+        }
+      ],
+      "received": false
+    },
+    {
+      "gp": 200,
+      "reward": [
+        {
+          "itemid": 1,
+          "count": 200000
+        }
+      ],
+      "received": false
+    },
+    {
+      "gp": 300,
+      "reward": [
+        {
+          "itemid": 1,
+          "count": 500000
+        },
+        {
+          "itemid": 28001,
+          "count": 1
+        }
+      ],
+      "received": false
+    }
+  ]
+}
